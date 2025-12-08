@@ -116,8 +116,16 @@ export async function GET(request) {
           scanRange.to
         );
 
+        console.log(`[Cron] Job ${job.campaignId}: Scan complete - Found ${taxData.userTaxPaid.size} users, ${taxData.validCount} valid, ${taxData.skippedCount} skipped`);
+
         // Update leaderboard with new data
         if (taxData.userTaxPaid.size > 0) {
+          console.log(`[Cron] Job ${job.campaignId}: Updating leaderboard...`);
+          await updateLeaderboard(job.campaignId, taxData.userTaxPaid, job);
+          console.log(`[Cron] Job ${job.campaignId}: Leaderboard updated!`);
+        } else {
+          console.log(`[Cron] Job ${job.campaignId}: No tax data to update`);
+        }
           await updateLeaderboard(job.campaignId, taxData.userTaxPaid, job);
           console.log(`[Cron] Job ${job.campaignId}: Found ${taxData.userTaxPaid.size} users with tax payments`);
         }
@@ -143,11 +151,13 @@ export async function GET(request) {
 
       } catch (error) {
         console.error(`[Cron] Error processing job ${job.campaignId}:`, error.message);
+        console.error(`[Cron] Stack:`, error.stack);
         await failJob(job.campaignId, error.message);
         
         results.push({
           campaignId: job.campaignId,
           error: error.message,
+          stack: error.stack,
         });
       }
     }
@@ -180,6 +190,8 @@ async function scanBlockRangeForTax(client, targetToken, taxWallet, fromBlock, t
   const taxTransferLogs = [];
   
   try {
+    console.log(`[Scan] Fetching VIRTUAL transfers from block ${fromBlock} to ${toBlock} to wallet ${taxWallet}`);
+    
     // Fetch VIRTUAL token transfers to tax wallet
     const logs = await client.request({
       method: 'eth_getLogs',
@@ -195,10 +207,11 @@ async function scanBlockRangeForTax(client, targetToken, taxWallet, fromBlock, t
       }],
     });
 
+    console.log(`[Scan] Found ${logs.length} VIRTUAL transfer logs`);
     taxTransferLogs.push(...logs);
 
   } catch (error) {
-    console.error(`[Scan] Error fetching logs ${fromBlock}-${toBlock}:`, error.message);
+    console.error(`[Scan] RPC Error fetching logs ${fromBlock}-${toBlock}:`, error.message);
     throw error;
   }
 
@@ -206,6 +219,8 @@ async function scanBlockRangeForTax(client, targetToken, taxWallet, fromBlock, t
   const userTaxPaid = new Map();
   let validCount = 0;
   let skippedCount = 0;
+
+  console.log(`[Scan] Processing ${taxTransferLogs.length} transactions for target token ${targetToken}`);
 
   for (const log of taxTransferLogs) {
     const txHash = log.transactionHash;
