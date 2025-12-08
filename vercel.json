@@ -7,7 +7,7 @@
     },
     {
       "path": "/api/cron/tax-scanner",
-      "schedule": "* * * * *"
+      "schedule": "*/5 * * * *"
     }
   ]
 }
