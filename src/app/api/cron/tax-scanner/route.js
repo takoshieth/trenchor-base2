@@ -126,9 +126,6 @@ export async function GET(request) {
         } else {
           console.log(`[Cron] Job ${job.campaignId}: No tax data to update`);
         }
-          await updateLeaderboard(job.campaignId, taxData.userTaxPaid, job);
-          console.log(`[Cron] Job ${job.campaignId}: Found ${taxData.userTaxPaid.size} users with tax payments`);
-        }
 
         // Update job progress
         await updateJobProgress(job.campaignId, scanRange.to, {
