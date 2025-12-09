@@ -35,9 +35,9 @@ export default function CampaignsPage() {
   };
 
   return (
-    <div className="min-h-screen px-8">
+    <div className="min-h-screen pl-[100px] pr-8 max-w-5xl mx-auto transform lg:translate-x-16 font-sans text-[13px] sm:text-[14px] leading-relaxed">
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-[#0a0f1a]/95 backdrop-blur-md border-b border-white/5 py-4 -mx-8 px-8">
+      <header className="sticky top-0 z-40 bg-transparent backdrop-blur-sm border-b border-white/5 py-4 -ml-[100px] -mr-8 pl-[100px] pr-8">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold text-[#00ff41]">Campaigns Terminal</h1>
@@ -52,26 +52,26 @@ export default function CampaignsPage() {
 
       {/* İstatistikler */}
       <div className="py-6">
-        <div className="grid grid-cols-4 gap-4">
-          <div className="p-4 rounded-lg bg-[#111827] border border-white/10">
-            <div className="text-3xl font-bold text-[#00ff41]">{tokens.length}</div>
-            <div className="text-xs text-white/40 mt-2">Campaigns Terminal</div>
+        <div className="grid grid-cols-4 gap-6">
+          <div className="p-6 rounded-xl bg-[#111827] border border-white/10">
+            <div className="text-4xl font-bold text-[#00ff41]">{tokens.length}</div>
+            <div className="text-sm text-white/40 mt-3">Campaigns Terminal</div>
           </div>
-          <div className="p-4 rounded-lg bg-[#111827] border border-white/10">
-            <div className="text-3xl font-bold text-cyan-400">
+          <div className="p-6 rounded-xl bg-[#111827] border border-white/10">
+            <div className="text-4xl font-bold text-cyan-400">
               {tokens.reduce((acc, t) => acc + parseInt(t.uniqueTraders || 0), 0)}
             </div>
-            <div className="text-xs text-white/40 mt-2">Traders</div>
+            <div className="text-sm text-white/40 mt-3">Traders</div>
           </div>
-          <div className="p-4 rounded-lg bg-[#111827] border border-white/10">
-            <div className="text-3xl font-bold text-yellow-400">
+          <div className="p-6 rounded-xl bg-[#111827] border border-white/10">
+            <div className="text-4xl font-bold text-yellow-400">
               {formatNumber(tokens.reduce((acc, t) => acc + parseInt(t.totalSwaps || 0), 0))}
             </div>
-            <div className="text-xs text-white/40 mt-2">Swaps</div>
+            <div className="text-sm text-white/40 mt-3">Swaps</div>
           </div>
-          <div className="p-4 rounded-lg bg-[#111827] border border-white/10">
-            <div className="text-3xl font-bold text-purple-400">24/7</div>
-            <div className="text-xs text-white/40 mt-2">Monitoring</div>
+          <div className="p-6 rounded-xl bg-[#111827] border border-white/10">
+            <div className="text-4xl font-bold text-purple-400">24/7</div>
+            <div className="text-sm text-white/40 mt-3">Monitoring</div>
           </div>
         </div>
       </div>
@@ -93,7 +93,7 @@ export default function CampaignsPage() {
             </div>
           </div>
         ) : tokens.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 rounded-lg bg-[#111827] border border-white/10">
+          <div className="flex flex-col items-center justify-center py-20 rounded-lg bg-transparent border border-white/10">
             <p className="text-lg text-white/50 mb-2">No Campaigns Terminal</p>
             <p className="text-xs text-white/30">Campaigns Terminal entries will appear here when added.</p>
           </div>

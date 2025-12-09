@@ -14,6 +14,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
     featured: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>,
     terminal: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
     tax: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
+    litepaper: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>,
   };
 
   const menuItems = [
@@ -22,6 +23,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
     { icon: icons.featured, label: 'Feature Campaigns', href: '/feature-campaigns' },
     { icon: icons.terminal, label: 'Token Terminal', href: '/terminal' },
     { icon: icons.tax, label: 'Tax Terminal', href: '/tax-leaderboard' },
+    { icon: icons.litepaper, label: 'Litepaper', href: '/litepaper' },
   ];
 
   return (
@@ -38,7 +40,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
           {sidebarOpen && (
             <div className="overflow-hidden whitespace-nowrap">
               <div className="text-[#00ff41] font-bold text-xl tracking-wider">TRENCHOR</div>
-              <div className="text-xs text-white/50 tracking-wide">Trading Platform</div>
+              <div className="text-xs text-white/50 tracking-wide">Trader Base</div>
             </div>
           )}
         </div>

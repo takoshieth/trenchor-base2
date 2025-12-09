@@ -36,7 +36,7 @@ export default function FeatureCampaignsPage() {
   };
 
   return (
-    <div className="min-h-screen px-8">
+    <div className="min-h-screen pl-[100px] pr-8 max-w-5xl mx-auto transform lg:translate-x-16 font-sans text-[13px] sm:text-[14px] leading-relaxed">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-[#0a0f1a]/95 backdrop-blur-md border-b border-white/5 py-4 -mx-8 px-8">
         <div className="flex items-center justify-between">

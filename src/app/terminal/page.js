@@ -108,12 +108,12 @@ export default function TerminalPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black font-mono selection:bg-[#00ff41] selection:text-black p-8 relative">
-        {/* CRT Scanline Effect */}
-        <div className="fixed inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-0 bg-[length:100%_2px,3px_100%] opacity-20"></div>
+    <div className="min-h-screen font-mono selection:bg-[#00ff41] selection:text-black p-8 relative">
+      {/* CRT Scanline Effect */}
+      <div className="fixed inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-0 bg-[length:100%_2px,3px_100%] opacity-20"></div>
         
-        {/* Main Content Container */}
-        <div className="relative z-10 max-w-[1300px] mx-auto">
+      {/* Main Content Container */}
+      <div className="relative z-10 max-w-5xl mx-auto transform lg:translate-x-12 ml-[100px]">
 
         {/* Header */}
         <div className="mb-8">
@@ -121,13 +121,13 @@ export default function TerminalPage() {
             <h1 className="text-5xl font-bold text-[#00ff41] mb-4 tracking-tighter animate-pulse drop-shadow-[0_0_10px_rgba(0,255,65,0.5)]">
               &gt; Virtuals Ecosystem
             </h1>
-            <div className="text-[#00ff41] text-sm tracking-[0.5em] opacity-80 border-y border-[#00ff41]/30 py-2 inline-block px-12 bg-black">
+            <div className="text-[#00ff41] text-sm tracking-[0.5em] opacity-80 border-y border-[#00ff41]/30 py-2 inline-block px-12 bg-black/60 backdrop-blur-sm">
               [ TOKEN TERMINAL ]
             </div>
           </div>
 
           {/* Controls */}
-          <div className="flex flex-wrap items-center justify-between gap-4 bg-black border border-[#00ff41]/30 p-4 shadow-[0_0_10px_rgba(0,255,65,0.05)]">
+          <div className="flex flex-wrap items-center justify-between gap-4 bg-black/60 backdrop-blur-sm border border-[#00ff41]/30 p-4 shadow-[0_0_10px_rgba(0,255,65,0.05)]">
             {/* Search */}
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -167,7 +167,7 @@ export default function TerminalPage() {
           </div>
         </div>
 
-        {/* Table Container */}
+        {/* Table Container - Keep Black */}
         <div className="mt-4 w-full border border-[#00ff41] bg-black shadow-[0_0_20px_rgba(0,255,65,0.1)] overflow-x-auto rounded-lg">
           <table className="w-full text-left border-collapse min-w-[800px]">
               <thead>
